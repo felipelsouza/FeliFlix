@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Header from './components/Header'
-import BannerMain from './components/BannerMain'
-import Carousel from './components/Carousel'
-import Footer from './components/Footer'
+import Header from '../../components/Header'
+import BannerMain from '../../components/BannerMain'
+import Carousel from '../../components/Carousel'
+import Footer from '../../components/Footer'
 
-import initialData from './data/initial_data.json'
+import initialData from '../../data/initial_data.json'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <BannerMain
         videoTitle={initialData.categories[0].videos[0].title}
         url={initialData.categories[0].videos[0].url}
-        videoDescription={"O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"}
+        videoDescription={"Gojira's video for 'Silvera' from the album Magma"}
       />
 
       <Carousel

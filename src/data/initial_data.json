@@ -1,25 +1,20 @@
 {
   "categories": [
     {
-      "title": "Front End",
-      "link": "https://www.alura.com.br/formacao-front-end",
-      "color": "#6BD1FF",
-      "link_extra": {
-        "text": "Formação de Front End na Alura",
-        "url": "https://www.alura.com.br/cursos-online-front-end"
-      },
+      "title": "Songs for Programming",
+      "color": "#6a00ff",
       "videos": [
         {
-          "title": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-          "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
+          "title": "Gojira - Silvera",
+          "url": "https://www.youtube.com/watch?v=iVvXB-Vwnco"
         },
         {
-          "title": "SEO com React",
-          "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+          "title": "Gojira - Flying Whales",
+          "url": "https://www.youtube.com/watch?v=eg_OyqkITSE"
         },
         {
-          "title": "Componentização com VanillaJS #AluraMais",
-          "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+          "title": "Death - Flesh and the Power it Holds",
+          "url": "https://www.youtube.com/watch?v=wK4VPM-0ssU"
         },
         {
           "title": "Pare de chutar e aprenda a display: inline #01",
