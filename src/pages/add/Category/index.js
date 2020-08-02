@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DefaultPage from '../../../components/DefaultPage';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button'
+import useForm from '../../../hooks/useForm';
 
 function AddCategory() {
     const initialValue = {
@@ -10,26 +11,15 @@ function AddCategory() {
         description: '',
         color: '',
     }
-    const [category, setCategory] = useState([]);
-    const [values, setValues] = useState(initialValue);
 
+    const { handleChange, values, clearForm } = useForm(initialValue)
 
-    function setValue(key, value) {
-        setValues({
-            ...values,
-            [key]: value
-        })
-    }
-
-    function handleChange(e) {
-        setValue(
-            e.target.getAttribute('name'),
-            e.target.value
-        )
-    }
+    const [category, setCategory] = useState([])
 
     useEffect(() => {
-        const URL = 'http://localhost:8080/categories/'
+        const URL = window.location.hostname.includes('localhost')
+            ? 'http://localhost:8080/categories'
+            : 'https://feliflix.herokuapp.com/categories'
         fetch(URL)
             .then(async (res) => {
                 const response = await res.json()
@@ -48,7 +38,7 @@ function AddCategory() {
                     values
                 ]);
 
-                setValues(initialValue)
+                clearForm()
             }}>
 
                 <FormField
@@ -83,8 +73,8 @@ function AddCategory() {
             <ul>
                 {category.map((category, index) => {
                     return (
-                        <li key={`${category}${index}`}>
-                            {category.name}
+                        <li key={`${category.title}`}>
+                            {category.title}
                         </li>
                     )
                 })}

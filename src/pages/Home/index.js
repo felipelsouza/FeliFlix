@@ -1,57 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import Header from '../../components/Header'
 import BannerMain from '../../components/BannerMain'
 import Carousel from '../../components/Carousel'
-import Footer from '../../components/Footer'
+import cartegoriesRepository from '../../repositories/categories'
+import DefaultPage from '../../components/DefaultPage'
 
-import initialData from '../../data/initial_data.json'
+function Home() {
+  const [initialData, setInitialData] = useState([])
 
-function App() {
+  useEffect(() => {
+    cartegoriesRepository.getAllWithVideos()
+      .then((categoriesWithVideos) => {
+        setInitialData(categoriesWithVideos)
+      })
+      .catch((err) => {
+        alert(`${err.Message}`)
+      })
+  }, [])
+
   return (
-    <div style={{ background: "#141414" }}>
-      <Header />
+    <DefaultPage paddingAll={0}>
+      {initialData.length === 0 && (<div>Loading...</div>)}
 
-      <BannerMain
-        videoTitle={initialData.categories[0].videos[0].title}
-        url={initialData.categories[0].videos[0].url}
-        videoDescription={"Gojira's video for 'Silvera' from the album Magma"}
-      />
+      {initialData.map((category, index) => {
+        if (index === 0) {
+          return (
+            <div key={category.id}>
+              <BannerMain
+                videoTitle={initialData[0].videos[0].titulo}
+                url={initialData[0].videos[0].url}
+                videoDescription={initialData[0].videos[0].description}
+              />
+              <Carousel
+                ignoreFirstVideo
+                category={initialData[0]}
+              />
+            </div>
+          )
+        }
 
-      <Carousel
-        ignoreFirstVideo
-        category={initialData.categories[0]}
-      />
+        return (
+          <Carousel
+            key={category.id}
+            category={category}
+          />
+        )
+      })}
 
-      <Carousel
-        ignoreFirstVideo
-        category={initialData.categories[1]}
-      />
-
-      <Carousel
-        ignoreFirstVideo
-        category={initialData.categories[2]}
-      />
-
-      <Carousel
-        ignoreFirstVideo
-        category={initialData.categories[3]}
-      />
-
-      <Carousel
-        ignoreFirstVideo
-        category={initialData.categories[4]}
-      />
-
-      <Carousel
-        ignoreFirstVideo
-        category={initialData.categories[5]}
-      />
-
-      <Footer />
-
-    </div>
+    </DefaultPage>
   )
 }
 
-export default App;
+export default Home
