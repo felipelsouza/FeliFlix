@@ -1,28 +1,32 @@
 import React from 'react';
-import Menu from '../Header';
+import Header from '../Header'
 import Footer from '../Footer';
-import styled from 'styled-components';
+import styled,{css} from 'styled-components'
 
 const Main = styled.main`
-  background-color: var(--black);
-  color: var(--white);
-  flex: 1;
-  padding-top: 50px;
-  padding-left: 5%;
-  padding-right: 5%;
+    background-color: var(--black);
+    color: var(--white);
+    flex:1;
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    ${ ({ paddingAll }) => css`
+        padding: ${paddingAll};
+    `}
 `;
 
+function DefaultPage({children, paddingAll}) {
+    return (
+        <>
+            <Header />
+                <Main paddingAll={paddingAll}> 
+                  {children}       
+                </Main> 
+                
+            <Footer />
+        </>
 
-function DefaultPage({ children }) {
-  return (
-    <>
-      <Menu />
-        <Main>
-          {children}
-        </Main>
-      <Footer />
-    </>
-  );
+    );
 }
 
-export default DefaultPage;
+export default DefaultPage

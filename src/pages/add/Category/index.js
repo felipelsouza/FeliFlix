@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultPage from '../../../components/DefaultPage';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button'
 
 function AddCategory() {
     const initialValue = {
@@ -27,6 +28,15 @@ function AddCategory() {
         )
     }
 
+    useEffect(() => {
+        const URL = 'http://localhost:8080/categories/'
+        fetch(URL)
+            .then(async (res) => {
+                const response = await res.json()
+                setCategory([ ...response ])
+            })
+    }, [])
+
     return (
         <DefaultPage>
             <h1>Add Category: {values.name}</h1>
@@ -42,7 +52,7 @@ function AddCategory() {
             }}>
 
                 <FormField
-                label="Category Name:"
+                label="Category Name"
                 type="text"
                 name="name"
                 value={values.name}
@@ -50,7 +60,7 @@ function AddCategory() {
                 />
 
                 <FormField
-                label="Description:"
+                label="Description"
                 type="textarea"
                 name="description"
                 value={values.description}
@@ -65,11 +75,10 @@ function AddCategory() {
                 onChange={handleChange}
                 />
 
-                <button>
+                <Button>
                     Add
-                </button>
+                </Button>
             </form>
-            
 
             <ul>
                 {category.map((category, index) => {

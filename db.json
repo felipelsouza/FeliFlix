@@ -1,0 +1,21 @@
+{
+    "categories": [
+      {
+        "id": 1,
+        "name": "Songs for Programming",
+        "color": "#6a00ff",
+        "link_extra": {
+          "text": "Listen to the Playlist on YouTube",
+          "url": "https://youtu.be/iVvXB-Vwnco"
+        }
+      }
+     ],
+    "videos": [
+      {
+        "id": 1,
+        "categoryId": 1,
+        "title": "Gojira - Silvera",
+        "url": "https://www.youtube.com/watch?v=iVvXB-Vwnco"
+      }
+    ]
+  }
