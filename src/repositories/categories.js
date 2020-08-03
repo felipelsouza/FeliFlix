@@ -14,6 +14,19 @@ function getAllWithVideos() {
         })
 }
 
+function getAll() {
+    return fetch(`${URL_CATEGORIES}`)
+        .then(async (res) => {
+            if(res.ok) {
+                const response = await res.json()
+                return response
+            }
+
+            throw new Error('Unable to fetch data :(')
+        })
+}
+
 export default {
-    getAllWithVideos
+    getAllWithVideos,
+    getAll
 }
